@@ -1,0 +1,18 @@
+Sun Sep 23 18:30:22 GMT-03:00 2012 : Apache Derby Network Server - 10.8.2.2 - (1181258) started and ready to accept connections on port 1527
+----------------------------------------------------------------
+Sun Sep 23 18:30:23 GMT-03:00 2012:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.2.2 - (1181258): instance a816c00e-0139-f509-c7fb-00007e0eee1b 
+on database directory C:\Users\Christian\Documents\GitHub\Java\DesignTapetesNB\DesignTapetes\mydb  with class loader sun.misc.Launcher$AppClassLoader@3d637d45 
+Loaded from file:/C:/Program%20Files/Java/jdk1.7.0_07/db/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.7.0_07-b11
+user.dir=C:\Program Files\Java\jdk1.7.0_07\db
+derby.system.home=C:\Users\Christian\Documents\GitHub\Java\DesignTapetesNB\DesignTapetes
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Sun Sep 23 18:30:36 GMT-03:00 2012:
+Shutting down instance a816c00e-0139-f509-c7fb-00007e0eee1b on database directory C:\Users\Christian\Documents\GitHub\Java\DesignTapetesNB\DesignTapetes\mydb with class loader sun.misc.Launcher$AppClassLoader@3d637d45 
+Sun Sep 23 18:30:36 GMT-03:00 2012 Thread[DRDAConnThread_3,5,main] (DATABASE = mydb), (DRDAID = {2}), Database 'mydb' shutdown.
+----------------------------------------------------------------
+Sun Sep 23 18:45:12 GMT-03:00 2012: Shutting down Derby engine
+----------------------------------------------------------------
