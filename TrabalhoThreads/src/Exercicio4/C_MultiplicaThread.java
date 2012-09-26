@@ -7,7 +7,7 @@ public class C_MultiplicaThread {
         C_Matriz m2 = new C_Matriz();
         C_Matriz m3 = new C_Matriz();
         m1.start();
-        //m2.start();
-        //m3.start();
+        m2.start();
+        m3.start();
     }
 }

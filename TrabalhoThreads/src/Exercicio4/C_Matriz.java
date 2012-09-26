@@ -1,7 +1,6 @@
 package Exercicio4;
 
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 public class C_Matriz extends Thread {
 
@@ -23,6 +22,6 @@ public class C_Matriz extends Thread {
                 mat2[i][j] = num;
             }
         }
-        C_CalculaMatrizes calc = new C_CalculaMatrizes(mat1, mat2);
+        C_CalculaMatrizes.calculaMatrizes(mat2, mat2);
     }
 }
