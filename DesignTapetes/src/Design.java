@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import javax.swing.*;
 
-public class Design extends JFrame implements ActionListener{
+public class Design extends JFrame implements ActionListener {
 
     //Tabela tb = new Tabela();
     //Consultas c = new Consultas();
@@ -13,39 +13,62 @@ public class Design extends JFrame implements ActionListener{
     private JPanel cliente;
     private JPanel pedido;
     private JPanel preco;
-    // Declarando as labels
-    private JLabel nome;
-    private JLabel sobrenome;
-    private JLabel cpf;
-    // Declarando os campos
-    private JTextField camponome;
-    private JTextField camposobrenome;
-    private JTextField campocpf;
-    // Declarando os botões
-    private JButton incluir;
-    private JButton atualizar;
-    private JButton listar;
-    private JButton excluir;
+    // Declarando e instanciando os componentes da tela Cliente
+    private JLabel nome = new JLabel("Nome:");
+    private JLabel sobrenome = new JLabel("Sobrenome:");
+    private JLabel cpf = new JLabel("CPF:");
+    private JTextField camponome = new JTextField();
+    private JTextField camposobrenome = new JTextField();
+    private JTextField campocpf = new JTextField();
+    private JButton incluir = new JButton("Incluir");
+    private JButton atualizar = new JButton("Atualizar");
+    private JButton listar = new JButton("Listar");
+    private JButton excluir = new JButton("Excluir");
+    // Declarando os componentes da tela Pedido
+    private JLabel titulo1 = new JLabel("Cliente");
+    private JLabel cpfPedido = new JLabel("CPF do cliente:");
+    private JLabel nomePedido = new JLabel("Nome:");
+    private JLabel sobrenomePedido = new JLabel("Sobrenome:");
+    private JLabel titulo2 = new JLabel("Item de Pedido");
+    private JLabel forma = new JLabel("Forma do Tapete:");
+    private JLabel material = new JLabel("Selecione Material:");
+    private JLabel altura = new JLabel("Altura (m)");
+    private JLabel largura = new JLabel("Largura(m)");
+    private JLabel tamanho = new JLabel("Tamanho(m2)");
+    private JTextField campocpfPedido;
+    private JTextField camponomePedido;
+    private JTextField camposobrenomePedido;
+    private JButton pesquisar = new JButton("Alterar item de Pedido");
+    private JButton alterarItem = new JButton("Alterar item de Pedido");
+    private JButton ExcluirItem = new JButton("Incluir item do Pedido");
+    private JButton IncluirItem = new JButton("Excluir item do Pedido");
+    private JComboBox comboForma;
+    private JComboBox comboMaterial;
+    private JLabel titulo3 = new JLabel("Resumo do Pedido");
+    private JLabel total = new JLabel("Total do Pedido:");
+    private JTextField valorTotal = new JTextField("R$ 250,00" /*Valor total do pedido.. soma do banco*/);
 
+    private String[] itens = { "Selecione", "Branco" , "Vermelho" , "Verde" , "Azul" };
+    
     public Design() {
         setTitle("Design Tapetes");
         setSize(700, 700);
         Container cp = getContentPane();
         JTabbedPane jtp;
-        
+
 
         //add(tb.getJScrollPane());
 
         //tb.atualizarTabela();
 
         /*if (tb.contador()
-                == true) {
-            excluir.setEnabled(true);
-            atualizar.setEnabled(true);
-        } else {
-            excluir.setEnabled(false);
-            atualizar.setEnabled(false);
-        }*/
+         == true) {
+         excluir.setEnabled(true);
+         atualizar.setEnabled(true);
+         } else {
+         excluir.setEnabled(false);
+         atualizar.setEnabled(false);
+         }*/
         // tabela do deam
         String[] colunas = {"CPF", "Nome", "Sobrenome"};
 
@@ -60,22 +83,13 @@ public class Design extends JFrame implements ActionListener{
         tabela.setSize(300, 200);
 
 
-        // Instanciando os componentes
-        cliente = new JPanel();
-        pedido = new JPanel();
-        preco = new JPanel();
-        nome = new JLabel("Nome:");
-        sobrenome = new JLabel("Sobrenome:");
-        cpf = new JLabel("CPF:");
-        camponome = new JTextField();
-        camposobrenome = new JTextField();
-        campocpf = new JTextField();
-        incluir = new JButton("Incluir");
-        atualizar = new JButton("Atualizar");
-        listar = new JButton("Listar");
-        excluir = new JButton("Excluir");
-        jtp = new JTabbedPane();
         
+        
+
+        jtp = new JTabbedPane();
+
+        comboForma = new JComboBox(itens);
+        comboMaterial = new JComboBox(itens);
 
         incluir.addActionListener(this);
         atualizar.addActionListener(this);
@@ -97,7 +111,33 @@ public class Design extends JFrame implements ActionListener{
         cliente.add(tabela);
         cp.add(jtp);
 
-        // Posicionando os botões na tela
+        pedido.setLayout(null);
+
+        pedido.add(titulo1);
+        pedido.add(cpfPedido);
+        pedido.add(nomePedido);
+        pedido.add(sobrenomePedido);
+        pedido.add(titulo2);
+        pedido.add(forma);
+        pedido.add(material);
+        pedido.add(altura);
+        pedido.add(largura);
+        pedido.add(tamanho);
+        pedido.add(campocpfPedido);
+        pedido.add(camponomePedido);
+        pedido.add(camposobrenomePedido);
+        pedido.add(pesquisar);
+        pedido.add(alterarItem);
+        pedido.add(ExcluirItem);
+        pedido.add(IncluirItem);
+        pedido.add(comboForma);
+        pedido.add(comboMaterial);
+        pedido.add(tabela);
+        pedido.add(titulo3);
+        pedido.add(total);
+        pedido.add(valorTotal);
+
+        // Posicionando os botões na tela Cliente
         nome.setBounds(10, 10, 100, 10);
         sobrenome.setBounds(10, 40, 100, 10);
         cpf.setBounds(10, 70, 100, 10);
@@ -108,6 +148,26 @@ public class Design extends JFrame implements ActionListener{
         atualizar.setBounds(296, 150, 100, 30);
         listar.setBounds(401, 150, 100, 30);
         excluir.setBounds(506, 150, 100, 30);
+        tabela.setLocation(20, 300);
+        
+        // Posicionando os botões na tela Pedido
+        cpfPedido.setBounds(30, 10, 100, 10);
+        nomePedido.setBounds(10, 40, 100, 10);
+        sobrenomePedido.setBounds(10, 70, 100, 10);
+        forma.setBounds(110, 8, 500, 20);
+        material.setBounds(110, 37, 500, 20);
+        altura.setBounds(110, 65, 500, 20);
+        largura.setBounds(191, 150, 100, 30);
+        tamanho.setBounds(296, 150, 100, 30);
+        campocpfPedido.setBounds(401, 150, 100, 30);
+        camponomePedido.setBounds(506, 150, 100, 30);
+        camposobrenomePedido.setBounds(506, 150, 100, 30);
+        pesquisar.setBounds(506, 150, 100, 30);
+        alterarItem.setBounds(506, 150, 100, 30);
+        ExcluirItem.setBounds(506, 150, 100, 30);
+        IncluirItem.setBounds(506, 150, 100, 30);
+        comboForma.setBounds(506, 150, 100, 30);
+        comboMaterial.setBorder(null);
         tabela.setLocation(20, 300);
 
         jtp.addTab("Cliente", cliente);
