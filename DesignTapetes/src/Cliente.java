@@ -1,4 +1,3 @@
-
 public class Cliente {
 	String nome, sobreNome;
 	int cpf;
@@ -9,6 +8,11 @@ public class Cliente {
 		sobreNome = nSobreNome;
 		cpf = nCpf;
 		pedido = nPedido;*/ 
+		
+		//Não é assim que construi?
+		this.nome = nome;
+        	this.cpf = cpf;
+       		this.sobreNome = sobreNome;
 	}
 	
 	Pedido getPedido(){
