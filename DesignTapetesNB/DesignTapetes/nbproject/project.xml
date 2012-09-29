@@ -6,6 +6,7 @@
             <name>DesignTapetes</name>
             <source-roots>
                 <root id="src.dir" name="src"/>
+                <root id="src.src.dir"/>
             </source-roots>
             <test-roots/>
         </data>
