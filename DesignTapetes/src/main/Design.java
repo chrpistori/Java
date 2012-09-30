@@ -1,3 +1,5 @@
+package main;
+
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -293,8 +295,8 @@ public class Design extends JFrame implements ActionListener {
 
     }
 
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         Design design = new Design();
         design.setVisible(true);
-    }
+    }*/
 }
