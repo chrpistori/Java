@@ -2,7 +2,6 @@ package main;
 
 import com.mysql.jdbc.Connection;
 import java.sql.ResultSet;
-//import com.mysql.jdbc.PreparedStatement;
 import java.sql.SQLException;
 import java.util.*;
 
@@ -31,7 +30,6 @@ public class ClienteDAO {
                 Cliente cliente = new Cliente();
                 cliente.setNome(rs.getString("nome"));
                 cliente.setSobreNome(rs.getString("sobrenome"));
-                //cliente.setCpf(Integer.parseInt(rs.getString("cpf")));
                 cliente.setCpf(rs.getString("cpf"));
 
                 listaClientes.add(cliente);
@@ -57,7 +55,6 @@ public class ClienteDAO {
 
                 cliente.setNome(rs.getString("nome"));
                 cliente.setSobreNome(rs.getString("sobrenome"));
-                //cliente.setCpf(Integer.parseInt(rs.getString("cpf")));
                 cliente.setCpf(rs.getString("cpf"));
 
             }
@@ -83,7 +80,6 @@ public class ClienteDAO {
             while (rs.next()) {
                 cliente.setNome(rs.getString("nome"));
                 cliente.setSobreNome(rs.getString("sobrenome"));
-                //cliente.setCpf(Integer.parseInt(rs.getString("cpf")));
                 cliente.setCpf(rs.getString("cpf"));
             }
             stmt.close();
@@ -103,7 +99,6 @@ public class ClienteDAO {
 
             pstmt.setString(1, cliente.getNome());
             pstmt.setString(2, cliente.getSobreNome());
-            //pstmt.setInt(3, cliente.getCpf());
             pstmt.setString(3, cliente.getCpf());
 
             int res = pstmt.executeUpdate();
@@ -115,42 +110,44 @@ public class ClienteDAO {
         }
     }
 
-    //ñ ok
+    //Ele atualiza mas gera uma execao igual a do delete
     public void AtualizaCliente(Cliente cliente) {
-
-        String sql = "update cliente set "
-                + "nome=" + cliente.getNome()
-                + ",sobrenome=" + cliente.getSobreNome()
-                + ",cpf=" + cliente.getCpf()
-                + ",pedido=" + cliente.getPedido() + " where nome like " + cliente.getNome();
+        
+        String nome = cliente.getNome();
+        String cpf = cliente.getCpf();
+        String sobrenome = cliente.getSobreNome();
+        int idpedido = cliente.getPedido();
+        
+        String sql = "update cliente set nome='" + nome + "',cpf='" + cpf + "',idpedido='" + idpedido + "',sobrenome='"+sobrenome+"' where nome = '"+nome+"' ";
 
         try {
             java.sql.Statement stmt = connection.createStatement();
 
             stmt.addBatch(sql);
-
-            int res[] = stmt.executeBatch();
+            
+            int res[] = stmt.executeBatch(); 
             connection.commit();
             stmt.close();
-
+            
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
 
     }
 
-    public void excluiCliente(Cliente cliente) {
-        String sql = "delete from cliente where nome=" + cliente.getNome();
+  //Ele exclui mas gera uma execao??
+    public void excluiCliente(Cliente cliente){
+        String sql = "delete from cliente where nome='"+cliente.getNome()+"' ";
 
         try {
             java.sql.Statement stmt = connection.createStatement();
 
             stmt.addBatch(sql);
-
-            int res[] = stmt.executeBatch();
+            
+            int res[] = stmt.executeBatch(); 
             connection.commit();
             stmt.close();
-
+            
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
